@@ -1,0 +1,99 @@
+﻿<Window x:Class="Wpfcolor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ColorEditor" Height="350" Width="660">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35px"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="80px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл" Margin="10px">
+                <MenuItem Header="Сохранить" x:Name="Save" Click="Save_Click"></MenuItem>
+                <MenuItem Header="О разработчике" x:Name="btnDev" Click="BtnDev_Click"></MenuItem>
+                <MenuItem Header="Выйти" x:Name="Exit" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+            <Separator Width="10px"/>
+            <ComboBox x:Name="cmdd" Width="125px" SelectionChanged="Cmdd_SelectionChanged">
+                <ComboBoxItem Content="Красный"></ComboBoxItem>
+                <ComboBoxItem Content="Зелёный"></ComboBoxItem>
+                <ComboBoxItem Content="Синий"></ComboBoxItem>
+            </ComboBox>
+            <Separator/>
+            <Slider Height="20px" Width="100px" Minimum="0" Maximum="100"  ValueChanged="Slider_ValueChanged" x:Name="penSlider"/>
+            <Button Height="20px" Width="60px" x:Name="clear" Click="Clear_Click" Content="Очистить">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Height="20px" Width="95px" x:Name="redic" Click="Redic_Click" Content="Редактирование">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Height="20px" Width="65px" x:Name="drawi" Click="Drawi_Click" Content="Рисование">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" ShadowDepth="5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Menu>
+        <InkCanvas Grid.Row="1" x:Name="inkk" OpacityMask="Black">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes Color="Gray" Height="1" Width="1"></DrawingAttributes>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+
+        <StackPanel Grid.Row="2">
+            <Slider Background="Red" x:Name="sld_RedColor" Minimum="0" Maximum="255" ValueChanged="sld_Color_ValueChanged"></Slider>
+            <Slider Background="Green" x:Name="sld_GreenColor" Minimum="0" Maximum="255" ValueChanged="sld_Color_ValueChanged"></Slider>
+            <Slider Background="Blue" x:Name="sld_BlueColor" Minimum="0" Maximum="255" ValueChanged="sld_Color_ValueChanged"></Slider>
+            <Label x:Name="lbl1" Content="Выбранный цвет"></Label>
+        </StackPanel>
+    </Grid>
+</Window>
